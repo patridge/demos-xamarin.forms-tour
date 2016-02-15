@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
 
 namespace X.FUIdemo.iOS
@@ -19,5 +15,12 @@ namespace X.FUIdemo.iOS
 			return base.FinishedLaunching (app, options);
 		}
 	}
-}
 
+	public class Application
+	{
+		static void Main (string[] args)
+		{
+			UIApplication.Main (args, null, "AppDelegate");
+		}
+	}
+}
