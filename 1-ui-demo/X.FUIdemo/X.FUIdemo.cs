@@ -1,8 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Xamarin.Forms;
-using System.ComponentModel;
-using System.Collections.Generic;
 
 namespace X.FUIdemo
 {
@@ -10,34 +7,11 @@ namespace X.FUIdemo
 	{
 		public App ()
 		{
-			var label = new Label {
-				XAlign = TextAlignment.Center,
-			};
-			label.SetBinding (Label.TextProperty, nameof (SomeViewModel.SomeLabel));
-
-			var listViewItemTemplate = new DataTemplate (typeof (ImageCell));
-			var listView = new ListView (ListViewCachingStrategy.RecycleElement) {
-				ItemTemplate = listViewItemTemplate,
-			};
-			listView.SetBinding (ListView.ItemsSourceProperty, nameof (SomeViewModel.SomeItems));
-			listViewItemTemplate.SetBinding (ImageCell.TextProperty, nameof (SomeItem.ItemName));
-			listViewItemTemplate.SetBinding (ImageCell.ImageSourceProperty, nameof (SomeItem.ImageUrl));
-
-			var codedPage = new ContentPage {
-				Padding = new Thickness (0, 20, 0, 0),
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						label,
-						listView,
-					}
-				}
-			};
-
-			var navigationPage = new NavigationPage (codedPage);
-			listView.ItemTapped += async (sender, e) => {
+			var mainPage = new CodedPage ();
+			var navigationPage = new NavigationPage (mainPage);
+			mainPage.ItemSelected += async (sender, e) => {
 				var detailPage = new DetailPage {
-					BindingContext = ((SomeItem)e.Item),
+					BindingContext = e,
 				};
 				await navigationPage.PushAsync (detailPage);
 			};

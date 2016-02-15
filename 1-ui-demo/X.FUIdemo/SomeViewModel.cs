@@ -1,12 +1,9 @@
-using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace X.FUIdemo
 {
-	public class SomeViewModel : INotifyPropertyChanged
+	public class SomeViewModel
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
-
 		public string SomeLabel { get; set; }
 		public List<SomeItem> SomeItems { get; set; }
 	}

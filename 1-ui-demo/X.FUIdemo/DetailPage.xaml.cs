@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 
 namespace X.FUIdemo
@@ -10,6 +8,11 @@ namespace X.FUIdemo
 		public DetailPage ()
 		{
 			InitializeComponent ();
+		}
+
+		void DetailsListView_ItemTapped (object sender, EventArgs e)
+		{
+			DetailsListView.SelectedItem = null;
 		}
 	}
 }
